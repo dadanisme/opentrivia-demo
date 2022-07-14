@@ -32,7 +32,6 @@ function App() {
     if (localStorage.getItem("user_problems")) {
       setProblems(JSON.parse(localStorage.getItem("user_problems")));
     } else {
-      console.log("fetching problems");
       fetch("https://opentdb.com/api.php?amount=10&type=multiple")
         .then((res) => res.json())
         .then((data) => {
