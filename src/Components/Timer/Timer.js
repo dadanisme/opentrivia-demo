@@ -38,7 +38,7 @@ export default function Timer(props) {
   return (
     <>
       <div className="timer">
-        <h4>Times left {convertTime(remainingTime)}</h4>
+        <h4>Remaining Time {convertTime(remainingTime)}</h4>
       </div>
       <div className="problem-info"></div>
     </>
