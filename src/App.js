@@ -28,11 +28,14 @@ function App() {
       window.location.href = "/login";
     }
 
+    if (localStorage.getItem("is_done")) {
+      setIsFinished(true);
+    }
     // check if user has problems set
     if (localStorage.getItem("user_problems")) {
       setProblems(JSON.parse(localStorage.getItem("user_problems")));
     } else {
-      fetch("https://opentdb.com/api.php?amount=10&type=multiple")
+      fetch("https://opentdb.com/api.php?amount=15&type=multiple")
         .then((res) => res.json())
         .then((data) => {
           setProblems(data.results);
@@ -96,7 +99,7 @@ function App() {
   const handleFinish = () => {
     setIsFinished(true);
     setIsRunning(false);
-    localStorage.removeItem("user_answers");
+    localStorage.setItem("is_done", true);
   };
 
   const handleUserAnswers = (id, answer) => {
@@ -186,8 +189,13 @@ function App() {
               <button
                 className="btn btn-outline-dark btn-start"
                 onClick={handleStart}
+                disabled={problems.length === 0}
               >
-                {timeContext === 600 ? "Start" : "Continue"}
+                {problems.length === 0
+                  ? "Loading"
+                  : timeContext === 600
+                  ? "Start"
+                  : "Continue"}
               </button>
             </div>
           )}

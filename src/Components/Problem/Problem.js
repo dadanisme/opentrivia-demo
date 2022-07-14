@@ -22,9 +22,10 @@ export default function Problem(props) {
               (props.userAnswers[props.problemId] === answer ? "selected" : "")
             }
             onClick={() => handleSelectAnswer(index)}
-          >
-            {answer}
-          </div>
+            dangerouslySetInnerHTML={{
+              __html: answer,
+            }}
+          ></div>
         ))}
       </div>
     </div>

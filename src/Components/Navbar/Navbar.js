@@ -7,6 +7,7 @@ export default function Navbar(props) {
     localStorage.removeItem("remaining_time");
     localStorage.removeItem("user_answers");
     localStorage.removeItem("user_problems");
+    localStorage.removeItem("is_done");
     window.location.href = "/login";
   };
   return (
