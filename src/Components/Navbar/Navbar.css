@@ -1,0 +1,14 @@
+.navbar-container {
+  width: 100vw;
+  height: 50px;
+  position: fixed;
+  background-color: var(--bs-dark);
+  color: var(--bs-light);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-information {
+  margin-right: 20px;
+}
