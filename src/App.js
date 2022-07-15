@@ -21,6 +21,7 @@ function App() {
       return 600;
     }
   });
+  const [score, setScore] = useState(0);
 
   useEffect(() => {
     // check is login or not
@@ -99,6 +100,12 @@ function App() {
   const handleFinish = () => {
     setIsFinished(true);
     setIsRunning(false);
+    const correct = userAnswers.filter(
+      (answer, index) => answer === problems[index].correct_answer
+    ).length;
+
+    const incorrect = problems.length - correct;
+    setScore(correct);
     localStorage.setItem("is_done", true);
   };
 
@@ -125,12 +132,7 @@ function App() {
                 <h3>
                   Your score:{" "}
                   <span>
-                    {userAnswers.filter(
-                      (answer, index) =>
-                        answer === problems[index].correct_answer
-                    ).length *
-                      10 +
-                      "%"}
+                    {((score / problems.length) * 100).toFixed(2) + "%"}
                   </span>
                 </h3>
               </div>
